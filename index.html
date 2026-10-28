@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pranish Store — Mobile Phones & Accessories in Lalitpur</title>
+<meta name="description" content="Pranish Store, Lalitpur — mobile phones, iPhone cases, chargers, smartwatches and gadgets. Rated 4.0 by 367 customers on Google. Open from 10 AM. Call 970-8080830." />
+<meta name="theme-color" content="#0f1218" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ff6b35'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='%23fff' text-anchor='middle'>P</text></svg>">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#f6f7f9;
+    --ink:#11141a;
+    --muted:#5c6572;
+    --accent:#ff6b35;
+    --accent-dk:#e2551f;
+    --line:#e7e9ee;
+    --dark:#0f1218;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(17,20,26,.08);
+    --max:1140px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{line-height:1.15;margin:0;letter-spacing:-.02em}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px}
+  section{scroll-margin-top:88px}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 22px;border-radius:999px;
+    font-weight:700;font-size:.94rem;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn--primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(255,107,53,.32)}
+  .btn--primary:hover{background:var(--accent-dk);box-shadow:0 12px 26px rgba(255,107,53,.4)}
+  .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+  .btn--ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+  .btn--dark{background:var(--dark);color:#fff}
+  .btn--dark:hover{background:#1b202a}
+  .btn--outline{background:#fff;color:var(--ink);border-color:var(--line)}
+  .btn--outline:hover{border-color:var(--ink)}
+
+  /* ---------- Header ---------- */
+  .header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:saturate(180%) blur(14px);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  .header.is-stuck{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(17,20,26,.05)}
+  .header__inner{display:flex;align-items:center;gap:18px;height:72px}
+
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em;font-size:1.12rem}
+  .brand__mark{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(140deg,#ff8a4c,var(--accent) 55%,#e2481c);
+    color:#fff;display:grid;place-items:center;
+    font-size:1.1rem;font-weight:800;
+    box-shadow:0 6px 16px rgba(255,107,53,.35);
+  }
+  .brand small{display:block;font-size:.66rem;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;line-height:1}
+
+  .nav{margin-left:auto;display:flex;align-items:center;gap:30px}
+  .nav a{font-size:.92rem;font-weight:600;color:#3a424f;position:relative;padding:4px 0}
+  .nav a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;
+    background:var(--accent);border-radius:2px;transition:width .22s ease;
+  }
+  .nav a:hover{color:var(--ink)}
+  .nav a:hover::after{width:100%}
+  .header .btn{padding:10px 18px;font-size:.88rem}
+
+  .burger{
+    display:none;margin-left:auto;
+    width:44px;height:44px;border-radius:12px;border:1px solid var(--line);
+    background:#fff;cursor:pointer;padding:0;place-items:center;
+  }
+  .burger span{display:block;width:19px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:.25s}
+  .burger span::before,.burger span::after{
+    content:"";position:absolute;left:0;width:19px;height:2px;background:var(--ink);border-radius:2px;transition:.25s;
+  }
+  .burger span::before{top:-6px}
+  .burger span::after{top:6px}
+  .burger[aria-expanded="true"] span{background:transparent}
+  .burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+  .burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:var(--dark);color:#fff;
+    padding:74px 0 96px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(620px 420px at 82% 8%, rgba(255,107,53,.30), transparent 62%),
+      radial-gradient(560px 380px at 6% 92%, rgba(76,120,255,.20), transparent 65%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 40%, #000 12%, transparent 76%);
+    -webkit-mask-image:radial-gradient(circle at 50% 40%, #000 12%, transparent 76%);
+    pointer-events:none;
+  }
+  .hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+
+  .pill{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:7px 15px 7px 8px;border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    font-size:.83rem;font-weight:600;color:#e9edf5;
+    backdrop-filter:blur(6px);
+  }
+  .pill b{color:#fff}
+  .pill .score{
+    background:var(--accent);color:#fff;font-weight:800;
+    padding:2px 9px;border-radius:999px;font-size:.8rem;
+  }
+  .stars{color:#ffc043;letter-spacing:1.5px;font-size:.82rem}
+
+  .hero h1{
+    font-size:clamp(2.15rem,4.6vw,3.5rem);
+    font-weight:800;margin:22px 0 18px;letter-spacing:-.035em;
+  }
+  .hero h1 em{font-style:normal;color:#ff8a4c}
+  .hero p.lede{font-size:1.06rem;color:#b9c2d0;max-width:52ch}
+  .hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+  .hero__meta{
+    display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;
+    font-size:.86rem;color:#9aa5b6;
+  }
+  .hero__meta span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px rgba(52,211,153,.16)}
+
+  /* Hero card */
+  .card-hero{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:24px;padding:26px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+  }
+  .card-hero h3{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#8f9bad;font-weight:700}
+  .rating-big{display:flex;align-items:flex-end;gap:14px;margin:12px 0 4px}
+  .rating-big strong{font-size:3.1rem;font-weight:800;line-height:.9;letter-spacing:-.04em}
+  .rating-big div{font-size:.83rem;color:#9aa5b6;padding-bottom:6px}
+  .rating-big .stars{font-size:1rem;display:block;margin-bottom:2px}
+
+  .bars{display:grid;gap:9px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.11)}
+  .bar-row{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:12px;font-size:.78rem;color:#9aa5b6}
+  .track{height:7px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+  .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#ff8a4c,var(--accent));width:0;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .tag{
+    font-size:.76rem;font-weight:600;color:#dfe5ee;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.13);
+    padding:5px 12px;border-radius:999px;
+  }
+  .tag b{color:#ff9a67;font-weight:800}
+
+  /* ---------- Trust strip ---------- */
+  .strip{background:#fff;border-bottom:1px solid var(--line)}
+  .strip__grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:0;padding:0;
+  }
+  .strip__item{
+    padding:28px 22px;display:flex;gap:14px;align-items:flex-start;
+    border-left:1px solid var(--line);
+  }
+  .strip__item:first-child{border-left:0;padding-left:0}
+  .strip__item:last-child{padding-right:0}
+  .strip__ico{
+    flex:0 0 auto;width:40px;height:40px;border-radius:12px;
+    background:#fff3ec;color:var(--accent-dk);display:grid;place-items:center;
+    font-size:1.05rem;
+  }
+  .strip__item h4{font-size:.93rem;font-weight:700;margin-bottom:3px}
+  .strip__item p{font-size:.82rem;color:var(--muted);line-height:1.45}
+
+  /* ---------- Section headings ---------- */
+  .sec{padding:86px 0}
+  .sec--alt{background:var(--surface)}
+  .sec__head{max-width:640px;margin-bottom:44px}
+  .eyebrow{
+    display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent-dk);margin-bottom:12px;
+  }
+  .sec__head h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:800}
+  .sec__head p{color:var(--muted);margin-top:14px;font-size:1rem}
+
+  /* ---------- Products ---------- */
+  .grid-products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .prod{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px;transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    position:relative;overflow:hidden;
+  }
+  .prod::after{
+    content:"";position:absolute;inset:auto -40px -60px auto;width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,107,53,.10),transparent 70%);
+    opacity:0;transition:opacity .25s ease;
+  }
+  .prod:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d9dde5}
+  .prod:hover::after{opacity:1}
+  .prod__ico{
+    width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+    font-size:1.35rem;background:#f2f4f8;margin-bottom:18px;
+  }
+  .prod h3{font-size:1.06rem;font-weight:700;margin-bottom:8px}
+  .prod p{font-size:.9rem;color:var(--muted)}
+  .prod ul{margin-top:14px;display:grid;gap:7px}
+  .prod li{font-size:.84rem;color:#434b58;display:flex;gap:9px;align-items:flex-start}
+  .prod li::before{content:"✓";color:var(--accent);font-weight:800;flex:0 0 auto}
+
+  /* ---------- Reviews ---------- */
+  .reviews__top{display:grid;grid-template-columns:.72fr 1.28fr;gap:40px;align-items:start}
+  .score-card{
+    background:var(--dark);color:#fff;border-radius:22px;padding:34px 30px;
+    position:relative;overflow:hidden;
+  }
+  .score-card::before{
+    content:"";position:absolute;width:220px;height:220px;right:-90px;top:-90px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,107,53,.42),transparent 68%);
+  }
+  .score-card .rating-big strong{font-size:3.6rem}
+  .score-card p{color:#9aa5b6;font-size:.86rem;margin-top:6px}
+  .score-card .btn{margin-top:22px;width:100%;justify-content:center}
+
+  .rev-list{display:grid;gap:16px}
+  .rev{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 26px;transition:box-shadow .22s ease, transform .22s ease;
+  }
+  .rev:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rev__head{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+  .avatar{
+    width:44px;height:44px;border-radius:50%;flex:0 0 auto;
+    display:grid;place-items:center;font-weight:800;font-size:1rem;color:#fff;
+    background:linear-gradient(140deg,#5b7cfa,#3b4fd8);
+  }
+  .avatar--2{background:linear-gradient(140deg,#12b886,#0a8f66)}
+  .rev__head h4{font-size:.95rem;font-weight:700}
+  .rev__head span{font-size:.78rem;color:var(--muted)}
+  .rev .stars{font-size:.88rem;margin-bottom:8px;display:block}
+  .rev p{font-size:.92rem;color:#3d4551;line-height:1.65}
+
+  /* ---------- Visit ---------- */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:stretch}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px}
+  .info-list{display:grid;gap:22px;margin-top:26px}
+  .info-item{display:flex;gap:15px;align-items:flex-start}
+  .info-item__ico{
+    width:42px;height:42px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;
+    background:#f2f4f8;font-size:1rem;
+  }
+  .info-item h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px}
+  .info-item p, .info-item a{font-size:.96rem;font-weight:600;color:var(--ink)}
+  .info-item a:hover{color:var(--accent-dk)}
+  .info-item small{display:block;font-size:.82rem;color:var(--muted);font-weight:500;margin-top:3px}
+
+  .hours-note{
+    margin-top:26px;padding:14px 16px;border-radius:14px;
+    background:#fff7f2;border:1px solid #ffe1d2;
+    font-size:.84rem;color:#8a4a26;line-height:1.5;
+  }
+
+  .map-card{border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px;position:relative;background:#eef0f4}
+  .map-card iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:saturate(.95)}
+
+  /* ---------- Popular times ---------- */
+  .times{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 32px}
+  .times__head{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:26px}
+  .times__head h3{font-size:1.1rem;font-weight:700}
+  .times__head span{font-size:.8rem;color:var(--muted)}
+  .chart{display:flex;align-items:flex-end;gap:10px;height:130px}
+  .chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:9px;height:100%}
+  .chart .b{
+    width:100%;border-radius:8px 8px 5px 5px;background:#e9ecf2;
+    transition:height .9s cubic-bezier(.22,1,.36,1), background .2s ease;
+    height:0;
+  }
+  .chart .col:hover .b{background:var(--accent)}
+  .chart .col.peak .b{background:linear-gradient(180deg,#ff9a67,var(--accent))}
+  .chart .col small{font-size:.72rem;color:var(--muted);font-weight:600}
+  .times__foot{margin-top:20px;font-size:.78rem;color:var(--muted)}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background:var(--dark);color:#fff;border-radius:26px;padding:56px 48px;
+    display:grid;grid-template-columns:1.4fr auto;gap:34px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .cta::before{
+    content:"";position:absolute;width:400px;height:400px;right:-140px;bottom:-200px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,107,53,.34),transparent 68%);
+  }
+  .cta h2{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;position:relative}
+  .cta p{color:#b0bac9;margin-top:12px;max-width:52ch;position:relative}
+  .cta__actions{display:flex;flex-wrap:wrap;gap:12px;position:relative}
+
+  /* ---------- Footer ---------- */
+  .footer{background:#0b0e13;color:#98a2b1;padding:60px 0 30px;margin-top:86px}
+  .footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.09)}
+  .footer .brand{color:#fff;margin-bottom:16px}
+  .footer p{font-size:.88rem;line-height:1.7;max-width:36ch}
+  .footer h4{color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px;font-weight:800}
+  .footer li{margin-bottom:10px;font-size:.9rem}
+  .footer a:hover{color:#ff9a67}
+  .footer__bottom{
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+    padding-top:24px;font-size:.8rem;color:#6f7a8a;
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1000px){
+    .hero__inner{grid-template-columns:1fr;gap:44px}
+    .card-hero{max-width:520px}
+    .strip__grid{grid-template-columns:repeat(2,1fr)}
+    .strip__item{border-left:0;padding:22px 0}
+    .strip__item:nth-child(odd){padding-right:20px}
+    .grid-products{grid-template-columns:repeat(2,1fr)}
+    .reviews__top{grid-template-columns:1fr;gap:28px}
+    .visit{grid-template-columns:1fr}
+    .cta{grid-template-columns:1fr;padding:44px 32px}
+    .footer__grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    .nav{
+      position:fixed;inset:72px 0 auto 0;
+      background:#fff;border-bottom:1px solid var(--line);
+      flex-direction:column;align-items:stretch;gap:0;
+      padding:10px 22px 22px;
+      box-shadow:0 24px 40px rgba(17,20,26,.12);
+      transform:translateY(-12px);opacity:0;pointer-events:none;
+      transition:transform .22s ease, opacity .22s ease;
+    }
+    .nav.open{transform:none;opacity:1;pointer-events:auto}
+    .nav a{padding:14px 0;border-bottom:1px solid var(--line);font-size:1rem}
+    .nav .btn{margin-top:16px;justify-content:center;border-bottom:0}
+    .burger{display:grid}
+    .header .btn--header-cta{display:none}
+    .hero{padding:52px 0 66px}
+    .sec{padding:64px 0}
+    .grid-products{grid-template-columns:1fr}
+    .footer__grid{grid-template-columns:1fr}
+    .chart{gap:6px;height:110px}
+    .times{padding:24px 20px}
+    .info-card{padding:26px 22px}
+    .cta{padding:36px 24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+
+<body id="top">
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a href="#top" class="brand" aria-label="Pranish Store home">
+      <span class="brand__mark">P</span>
+      <span>Pranish Store<small>Lalitpur · Nepal</small></span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+      <span></span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <a href="#products">Products</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#hours">Store hours</a>
+      <a href="#visit">Visit us</a>
+      <a class="btn btn--primary" href="tel:+9779708080830">📞 970-8080830</a>
+    </nav>
+
+    <a class="btn btn--dark btn--header-cta" href="tel:+9779708080830" style="margin-left:14px">Call store</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero__inner">
+    <div>
+      <span class="pill">
+        <span class="score">4.0 ★</span>
+        <span><b>367</b> Google reviews</span>
+      </span>
+
+      <h1>Your neighbourhood <em>mobile store</em> in Lalitpur.</h1>
+
+      <p class="lede">
+        Phones, iPhone cases, chargers, smartwatches and everyday gadgets — with honest advice
+        from a team that's been serving Lalitpur customers for years.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="tel:+9779708080830">📞 Call 970-8080830</a>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+M8C7%2BXM+Lalitpur" target="_blank" rel="noopener">Get directions ↗</a>
+      </div>
+
+      <div class="hero__meta">
+        <span><i class="dot" aria-hidden="true"></i> Opens 10 AM</span>
+        <span>📍 Lalitpur, Bagmati 44600</span>
+        <span>🌐 pranishstore.com</span>
+      </div>
+    </div>
+
+    <!-- Rating card -->
+    <aside class="card-hero reveal" aria-label="Customer rating summary">
+      <h3>Google rating</h3>
+      <div class="rating-big">
+        <strong>4.0</strong>
+        <div>
+          <span class="stars" aria-hidden="true">★★★★☆</span>
+          367 reviews · Lalitpur
+        </div>
+      </div>
+
+      <div class="bars" aria-hidden="true">
+        <div class="bar-row"><span>5 star</span><div class="track"><div class="fill" data-w="62"></div></div></div>
+        <div class="bar-row"><span>4 star</span><div class="track"><div class="fill" data-w="20"></div></div></div>
+        <div class="bar-row"><span>3 star</span><div class="track"><div class="fill" data-w="8"></div></div></div>
+        <div class="bar-row"><span>2 star</span><div class="track"><div class="fill" data-w="4"></div></div></div>
+        <div class="bar-row"><span>1 star</span><div class="track"><div class="fill" data-w="6"></div></div></div>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag"><b>29</b> mention iPhone</span>
+        <span class="tag"><b>9</b> discounts</span>
+        <span class="tag"><b>7</b> free accessories</span>
+        <span class="tag"><b>5</b> gadget selection</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<div class="strip">
+  <div class="wrap strip__grid">
+    <div class="strip__item">
+      <div class="strip__ico" aria-hidden="true">🛡️</div>
+      <div><h4>Genuine products</h4><p>Sealed phones and branded accessories only.</p></div>
+    </div>
+    <div class="strip__item">
+      <div class="strip__ico" aria-hidden="true">🎁</div>
+      <div><h4>Free accessories</h4><p>Bundled extras with selected phone purchases.</p></div>
+    </div>
+    <div class="strip__item">
+      <div class="strip__ico" aria-hidden="true">💬</div>
+      <div><h4>Honest advice</h4><p>We help you pick what fits — not what costs most.</p></div>
+    </div>
+    <div class="strip__item">
+      <div class="strip__ico" aria-hidden="true">🏷️</div>
+      <div><h4>Real discounts</h4><p>Regular deals on cases, chargers and audio.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="sec" id="products">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <span class="eyebrow">What we stock</span>
+      <h2>Everything for your phone, under one roof.</h2>
+      <p>Walk in for a new handset or just a cable — you'll find it here, and you'll get a straight answer about what you actually need.</p>
+    </div>
+
+    <div class="grid-products">
+      <article class="prod reveal">
+        <div class="prod__ico" aria-hidden="true">📱</div>
+        <h3>Smartphones &amp; iPhones</h3>
+        <p>Latest and value models, sealed with warranty — the most-talked-about part of our shop.</p>
+        <ul>
+          <li>iPhone range &amp; accessories</li>
+          <li>Android phones across budgets</li>
+          <li>Setup &amp; data transfer help</li>
+        </ul>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__ico" aria-hidden="true">🧩</div>
+        <h3>Cases &amp; Protection</h3>
+        <p>Snap-on covers, silicone cases, tempered glass and camera protectors fitted in-store.</p>
+        <ul>
+          <li>Model-specific fitting</li>
+          <li>Tempered glass installation</li>
+          <li>Free accessories with select phones</li>
+        </ul>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__ico" aria-hidden="true">🔌</div>
+        <h3>Chargers &amp; Cables</h3>
+        <p>Fast chargers, power banks and braided cables from brands you can trust.</p>
+        <ul>
+          <li>USB-C, Lightning, micro-USB</li>
+          <li>Power banks &amp; adapters</li>
+          <li>Car chargers</li>
+        </ul>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__ico" aria-hidden="true">⌚</div>
+        <h3>Smartwatches</h3>
+        <p>Including Promate watches — praised by our customers for design and build quality.</p>
+        <ul>
+          <li>Fitness &amp; calling watches</li>
+          <li>Straps and screen guards</li>
+          <li>Pairing assistance in store</li>
+        </ul>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__ico" aria-hidden="true">🎧</div>
+        <h3>Audio &amp; Earbuds</h3>
+        <p>Wireless earbuds, neckbands and speakers for daily commutes and workouts.</p>
+        <ul>
+          <li>TWS earbuds</li>
+          <li>Bluetooth speakers</li>
+          <li>Wired earphones</li>
+        </ul>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__ico" aria-hidden="true">✨</div>
+        <h3>Gadgets &amp; Extras</h3>
+        <p>Small things that make a difference — cables, mounts, memory cards, selfie sticks.</p>
+        <ul>
+          <li>Memory cards &amp; OTG</li>
+          <li>Phone holders &amp; tripods</li>
+          <li>Cleaning kits &amp; accessories</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="sec sec--alt" id="reviews">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <span class="eyebrow">Customer reviews</span>
+      <h2>367 people have rated us on Google.</h2>
+      <p>Here's what a few of them said after visiting the store.</p>
+    </div>
+
+    <div class="reviews__top">
+      <div class="score-card reveal">
+        <h3 style="font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#8f9bad;font-weight:700">Overall rating</h3>
+        <div class="rating-big">
+          <strong>4.0</strong>
+          <div>
+            <span class="stars" aria-hidden="true">★★★★☆</span>
+            out of 5
+          </div>
+        </div>
+        <p>Based on 367 Google reviews for Pranish Store, Lalitpur.</p>
+        <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+Lalitpur" target="_blank" rel="noopener">Read all reviews ↗</a>
+      </div>
+
+      <div class="rev-list">
+        <article class="rev reveal">
+          <div class="rev__head">
+            <div class="avatar" aria-hidden="true">R</div>
+            <div>
+              <h4>Reshab Tamang</h4>
+              <span>1 review · 3 weeks ago</span>
+            </div>
+          </div>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <p>“I recently purchased a phone from Pranish Store, and I must say that my overall experience was absolutely excellent. From the moment I entered the store, I felt welcomed and comfortable. The entire team was very friendly, respectful and genuinely helpful.”</p>
+        </article>
+
+        <article class="rev reveal">
+          <div class="rev__head">
+            <div class="avatar avatar--2" aria-hidden="true">S</div>
+            <div>
+              <h4>Sujit Mahato</h4>
+              <span>1 review · 3 months ago</span>
+            </div>
+          </div>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <p>“I've shopped at Pranish Store many times, and every visit has been a great experience. This time, I purchased a Promate Watch, and I'm truly impressed with its design, build quality, features and overall performance.”</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POPULAR TIMES ================= -->
+<section class="sec" id="hours" style="padding-top:0">
+  <div class="wrap">
+    <div class="times reveal">
+      <div class="times__head">
+        <h3>Popular times · Wednesdays</h3>
+        <span>Plan your visit for a quieter counter</span>
+      </div>
+
+      <div class="chart" id="chart" role="img" aria-label="Indicative footfall chart for a typical Wednesday, busiest in the late afternoon and evening">
+        <div class="col"><div class="b" data-h="22"></div><small>6a</small></div>
+        <div class="col"><div class="b" data-h="38"></div><small>7a</small></div>
+        <div class="col"><div class="b" data-h="55"></div><small>8a</small></div>
+        <div class="col"><div class="b" data-h="70"></div><small>9a</small></div>
+        <div class="col"><div class="b" data-h="78"></div><small>10a</small></div>
+        <div class="col"><div class="b" data-h="72"></div><small>11a</small></div>
+        <div class="col"><div class="b" data-h="66"></div><small>12p</small></div>
+        <div class="col"><div class="b" data-h="74"></div><small>1p</small></div>
+        <div class="col"><div class="b" data-h="70"></div><small>2p</small></div>
+        <div class="col"><div class="b" data-h="76"></div><small>3p</small></div>
+        <div class="col peak"><div class="b" data-h="92"></div><small>4p</small></div>
+        <div class="col peak"><div class="b" data-h="100"></div><small>5p</small></div>
+        <div class="col peak"><div class="b" data-h="88"></div><small>6p</small></div>
+        <div class="col"><div class="b" data-h="64"></div><small>7p</small></div>
+        <div class="col"><div class="b" data-h="40"></div><small>8p</small></div>
+        <div class="col"><div class="b" data-h="22"></div><small>9p</small></div>
+      </div>
+
+      <p class="times__foot">
+        Store opens at <strong>10 AM</strong>. Footfall shown here is indicative — check Google Maps for live popular times before you head over.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="sec sec--alt" id="visit">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <span class="eyebrow">Find us</span>
+      <h2>Come by the store in Lalitpur.</h2>
+      <p>Walk-ins welcome. Call ahead if you're looking for a specific model and we'll check stock for you.</p>
+    </div>
+
+    <div class="visit">
+      <div class="info-card reveal">
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-item__ico" aria-hidden="true">📍</div>
+            <div>
+              <h4>Address</h4>
+              <p>Lalitpur, Bagmati Province 44600, Nepal</p>
+              <small>Plus code: M8C7+XM Lalitpur</small>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-item__ico" aria-hidden="true">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+9779708080830">970-8080830</a>
+              <small>Tap to call from your phone</small>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-item__ico" aria-hidden="true">🌐</div>
+            <div>
+              <h4>Website</h4>
+              <a href="https://pranishstore.com" target="_blank" rel="noopener">pranishstore.com</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-item__ico" aria-hidden="true">🕙</div>
+            <div>
+              <h4>Opening hours</h4>
+              <p>Opens 10:00 AM</p>
+              <small>Currently listed as closed outside opening hours</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours-note">
+          ⏰ Hours can change on public holidays and festival days — a quick call to
+          <a href="tel:+9779708080830" style="font-weight:700;text-decoration:underline">970-8080830</a>
+          will save you a trip.
+        </div>
+      </div>
+
+      <div class="map-card reveal">
+        <iframe
+          title="Map showing Pranish Store in Lalitpur"
+          src="https://www.google.com/maps?q=M8C7%2BXM+Lalitpur,+Bagmati+Province&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>Looking for a specific phone or accessory?</h2>
+        <p>Give us a ring and we'll tell you what's in stock, what it costs, and whether it's worth the upgrade.</p>
+      </div>
+      <div class="cta__actions">
+        <a class="btn btn--primary" href="tel:+9779708080830">📞 Call the store</a>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+M8C7%2BXM+Lalitpur" target="_blank" rel="noopener">Directions ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="brand">
+          <span class="brand__mark">P</span>
+          <span style="color:#fff">Pranish Store<small style="color:#6f7a8a">Mobile · Lalitpur</small></span>
+        </div>
+        <p>Mobile phones, accessories and gadgets in Lalitpur, Bagmati Province. Rated 4.0 by 367 customers on Google.</p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#hours">Store hours</a></li>
+          <li><a href="#visit">Visit us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+9779708080830">970-8080830</a></li>
+          <li><a href="https://pranishstore.com" target="_blank" rel="noopener">pranishstore.com</a></li>
+          <li>Lalitpur, Bagmati 44600</li>
+          <li>M8C7+XM Lalitpur</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year">2025</span> Pranish Store. All rights reserved.</span>
+      <span>Information sourced from the store's Google Business listing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Mobile nav ---------- */
+  var burger = document.getElementById("burger");
+  var nav = document.getElementById("nav");
+
+  burger.addEventListener("click", function () {
+    var open = nav.classList.toggle("open");
+    burger.setAttribute("aria-expanded", String(open));
+  });
+
+  nav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      nav.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  /* ---------- Header shadow on scroll ---------- */
+  var header = document.getElementById("header");
+  var onScroll = function () {
+    header.classList.toggle("is-stuck", window.scrollY > 8);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- Animate rating bars ---------- */
+  var fills = document.querySelectorAll(".fill");
+  var animateBars = function () {
+    fills.forEach(function (f) { f.style.width = f.dataset.w + "%"; });
+  };
+
+  /* ---------- Animate popular-times chart ---------- */
+  var chart = document.getElementById("chart");
+  var animateChart = function () {
+    chart.querySelectorAll(".b").forEach(function (bar, i) {
+      setTimeout(function () { bar.style.height = bar.dataset.h + "%"; }, i * 45);
+    });
+  };
+
+  if ("IntersectionObserver" in window) {
+    var statsIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains("card-hero")) animateBars();
+          if (entry.target === chart) animateChart();
+          statsIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    var card = document.querySelector(".card-hero");
+    if (card) statsIO.observe(card);
+    if (chart) statsIO.observe(chart);
+  } else {
+    animateBars();
+    animateChart();
+  }
+
+  /* ---------- Year ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
