@@ -77,14 +77,20 @@
 
   /* ---------- Header ---------- */
   .header{
-    position:sticky;top:0;z-index:60;
-    background:rgba(255,255,255,.92);
+    position:fixed;top:0;left:0;width:100%;z-index:60;
+    background:rgba(255,255,255,.95);
     backdrop-filter:saturate(180%) blur(14px);
     -webkit-backdrop-filter:saturate(180%) blur(14px);
-    border-bottom:1px solid transparent;
-    transition:border-color .25s ease, box-shadow .25s ease;
+    border-bottom:1px solid var(--line);
+    transition:transform .35s ease, box-shadow .25s ease;
   }
-  .header.is-stuck{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(26,33,19,.06)}
+  .header.is-stuck{box-shadow:0 6px 24px rgba(26,33,19,.06)}
+  
+  /* Hide header when scrolling down */
+  .header.header--hidden {
+    transform: translateY(-100%);
+  }
+  
   .header__inner{display:flex;align-items:center;gap:18px;height:80px}
 
   .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em;font-size:1.15rem}
@@ -93,7 +99,7 @@
   .brand img{
     height: 52px; 
     width: auto; 
-    border-radius: 8px; /* Slight rounding to match the logo's friendly vibe */
+    border-radius: 8px; 
     object-fit: contain;
   }
   
@@ -124,6 +130,9 @@
   .burger[aria-expanded="true"] span{background:transparent}
   .burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
   .burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+  /* Add padding to body to account for fixed header */
+  main { padding-top: 80px; }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -417,7 +426,6 @@
 <header class="header" id="header">
   <div class="wrap header__inner">
     <a href="#top" class="brand" aria-label="Pranish Store home">
-      <!-- Image path updated to match your file name -->
       <img src="pranish-store-city-centre.png" alt="Pranish Store Logo" onerror="this.src='https://via.placeholder.com/52x52/8BC34A/ffffff?text=P'">
       <div class="brand-text">
         Pranish Store
@@ -436,338 +444,339 @@
       <a href="#visit">Visit us</a>
       <a class="btn btn--primary" href="tel:+9779708080830">📞 970-8080830</a>
     </nav>
-
-    <a class="btn btn--dark btn--header-cta" href="tel:+9779708080830" style="margin-left:14px">Call store</a>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="wrap hero__inner">
-    <div>
-      <span class="pill">
-        <span class="score">4.0 ★</span>
-        <span><b>367</b> Google reviews</span>
-      </span>
+<!-- Wrap all content below the fixed header in a main tag -->
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div>
+        <span class="pill">
+          <span class="score">4.0 ★</span>
+          <span><b>367</b> Google reviews</span>
+        </span>
 
-      <h1>Your neighbourhood <em>mobile store</em> in Lalitpur.</h1>
+        <h1>Your neighbourhood <em>mobile store</em> in Lalitpur.</h1>
 
-      <p class="lede">
-        Phones, iPhone cases, chargers, smartwatches and everyday gadgets — with honest advice
-        from a team that's been serving Lalitpur customers for years.
-      </p>
+        <p class="lede">
+          Phones, iPhone cases, chargers, smartwatches and everyday gadgets — with honest advice
+          from a team that's been serving Lalitpur customers for years.
+        </p>
 
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="tel:+9779708080830">📞 Call 970-8080830</a>
-        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+M8C7%2BXM+Lalitpur" target="_blank" rel="noopener">Get directions ↗</a>
-      </div>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="tel:+9779708080830">📞 Call 970-8080830</a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+M8C7%2BXM+Lalitpur" target="_blank" rel="noopener">Get directions ↗</a>
+        </div>
 
-      <div class="hero__meta">
-        <span><i class="dot" aria-hidden="true"></i> Opens 10 AM</span>
-        <span>📍 Lalitpur, Bagmati 44600</span>
-        <span>🌐 pranishstore.com</span>
-      </div>
-    </div>
-
-    <!-- Rating card -->
-    <aside class="card-hero reveal" aria-label="Customer rating summary">
-      <h3>Google rating</h3>
-      <div class="rating-big">
-        <strong>4.0</strong>
-        <div>
-          <span class="stars" aria-hidden="true">★★★★☆</span>
-          367 reviews · Lalitpur
+        <div class="hero__meta">
+          <span><i class="dot" aria-hidden="true"></i> Opens 10 AM</span>
+          <span>📍 Lalitpur, Bagmati 44600</span>
+          <span>🌐 pranishstore.com</span>
         </div>
       </div>
 
-      <div class="bars" aria-hidden="true">
-        <div class="bar-row"><span>5 star</span><div class="track"><div class="fill" data-w="62"></div></div></div>
-        <div class="bar-row"><span>4 star</span><div class="track"><div class="fill" data-w="20"></div></div></div>
-        <div class="bar-row"><span>3 star</span><div class="track"><div class="fill" data-w="8"></div></div></div>
-        <div class="bar-row"><span>2 star</span><div class="track"><div class="fill" data-w="4"></div></div></div>
-        <div class="bar-row"><span>1 star</span><div class="track"><div class="fill" data-w="6"></div></div></div>
-      </div>
-
-      <div class="tag-row">
-        <span class="tag"><b>29</b> mention iPhone</span>
-        <span class="tag"><b>9</b> discounts</span>
-        <span class="tag"><b>7</b> free accessories</span>
-        <span class="tag"><b>5</b> gadget selection</span>
-      </div>
-    </aside>
-  </div>
-</section>
-
-<!-- ================= TRUST STRIP ================= -->
-<div class="strip">
-  <div class="wrap strip__grid">
-    <div class="strip__item">
-      <div class="strip__ico" aria-hidden="true">🛡️</div>
-      <div><h4>Genuine products</h4><p>Sealed phones and branded accessories only.</p></div>
-    </div>
-    <div class="strip__item">
-      <div class="strip__ico" aria-hidden="true">🎁</div>
-      <div><h4>Free accessories</h4><p>Bundled extras with selected phone purchases.</p></div>
-    </div>
-    <div class="strip__item">
-      <div class="strip__ico" aria-hidden="true">💬</div>
-      <div><h4>Honest advice</h4><p>We help you pick what fits — not what costs most.</p></div>
-    </div>
-    <div class="strip__item">
-      <div class="strip__ico" aria-hidden="true">🏷️</div>
-      <div><h4>Real discounts</h4><p>Regular deals on cases, chargers and audio.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ================= PRODUCTS ================= -->
-<section class="sec" id="products">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <span class="eyebrow">What we stock</span>
-      <h2>Everything for your phone, under one roof.</h2>
-      <p>Walk in for a new handset or just a cable — you'll find it here, and you'll get a straight answer about what you actually need.</p>
-    </div>
-
-    <div class="grid-products">
-      <article class="prod reveal">
-        <div class="prod__ico" aria-hidden="true">📱</div>
-        <h3>Smartphones &amp; iPhones</h3>
-        <p>Latest and value models, sealed with warranty — the most-talked-about part of our shop.</p>
-        <ul>
-          <li>iPhone range &amp; accessories</li>
-          <li>Android phones across budgets</li>
-          <li>Setup &amp; data transfer help</li>
-        </ul>
-      </article>
-
-      <article class="prod reveal">
-        <div class="prod__ico" aria-hidden="true">🧩</div>
-        <h3>Cases &amp; Protection</h3>
-        <p>Snap-on covers, silicone cases, tempered glass and camera protectors fitted in-store.</p>
-        <ul>
-          <li>Model-specific fitting</li>
-          <li>Tempered glass installation</li>
-          <li>Free accessories with select phones</li>
-        </ul>
-      </article>
-
-      <article class="prod reveal">
-        <div class="prod__ico" aria-hidden="true">🔌</div>
-        <h3>Chargers &amp; Cables</h3>
-        <p>Fast chargers, power banks and braided cables from brands you can trust.</p>
-        <ul>
-          <li>USB-C, Lightning, micro-USB</li>
-          <li>Power banks &amp; adapters</li>
-          <li>Car chargers</li>
-        </ul>
-      </article>
-
-      <article class="prod reveal">
-        <div class="prod__ico" aria-hidden="true">⌚</div>
-        <h3>Smartwatches</h3>
-        <p>Including Promate watches — praised by our customers for design and build quality.</p>
-        <ul>
-          <li>Fitness &amp; calling watches</li>
-          <li>Straps and screen guards</li>
-          <li>Pairing assistance in store</li>
-        </ul>
-      </article>
-
-      <article class="prod reveal">
-        <div class="prod__ico" aria-hidden="true">🎧</div>
-        <h3>Audio &amp; Earbuds</h3>
-        <p>Wireless earbuds, neckbands and speakers for daily commutes and workouts.</p>
-        <ul>
-          <li>TWS earbuds</li>
-          <li>Bluetooth speakers</li>
-          <li>Wired earphones</li>
-        </ul>
-      </article>
-
-      <article class="prod reveal">
-        <div class="prod__ico" aria-hidden="true">✨</div>
-        <h3>Gadgets &amp; Extras</h3>
-        <p>Small things that make a difference — cables, mounts, memory cards, selfie sticks.</p>
-        <ul>
-          <li>Memory cards &amp; OTG</li>
-          <li>Phone holders &amp; tripods</li>
-          <li>Cleaning kits &amp; accessories</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= REVIEWS ================= -->
-<section class="sec sec--alt" id="reviews">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <span class="eyebrow">Customer reviews</span>
-      <h2>367 people have rated us on Google.</h2>
-      <p>Here's what a few of them said after visiting the store.</p>
-    </div>
-
-    <div class="reviews__top">
-      <div class="score-card reveal">
-        <h3 style="font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#9CAC8A;font-weight:700">Overall rating</h3>
+      <!-- Rating card -->
+      <aside class="card-hero reveal" aria-label="Customer rating summary">
+        <h3>Google rating</h3>
         <div class="rating-big">
           <strong>4.0</strong>
           <div>
             <span class="stars" aria-hidden="true">★★★★☆</span>
-            out of 5
+            367 reviews · Lalitpur
           </div>
         </div>
-        <p>Based on 367 Google reviews for Pranish Store, Lalitpur.</p>
-        <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+Lalitpur" target="_blank" rel="noopener">Read all reviews ↗</a>
+
+        <div class="bars" aria-hidden="true">
+          <div class="bar-row"><span>5 star</span><div class="track"><div class="fill" data-w="62"></div></div></div>
+          <div class="bar-row"><span>4 star</span><div class="track"><div class="fill" data-w="20"></div></div></div>
+          <div class="bar-row"><span>3 star</span><div class="track"><div class="fill" data-w="8"></div></div></div>
+          <div class="bar-row"><span>2 star</span><div class="track"><div class="fill" data-w="4"></div></div></div>
+          <div class="bar-row"><span>1 star</span><div class="track"><div class="fill" data-w="6"></div></div></div>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag"><b>29</b> mention iPhone</span>
+          <span class="tag"><b>9</b> discounts</span>
+          <span class="tag"><b>7</b> free accessories</span>
+          <span class="tag"><b>5</b> gadget selection</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= TRUST STRIP ================= -->
+  <div class="strip">
+    <div class="wrap strip__grid">
+      <div class="strip__item">
+        <div class="strip__ico" aria-hidden="true">🛡️</div>
+        <div><h4>Genuine products</h4><p>Sealed phones and branded accessories only.</p></div>
+      </div>
+      <div class="strip__item">
+        <div class="strip__ico" aria-hidden="true">🎁</div>
+        <div><h4>Free accessories</h4><p>Bundled extras with selected phone purchases.</p></div>
+      </div>
+      <div class="strip__item">
+        <div class="strip__ico" aria-hidden="true">💬</div>
+        <div><h4>Honest advice</h4><p>We help you pick what fits — not what costs most.</p></div>
+      </div>
+      <div class="strip__item">
+        <div class="strip__ico" aria-hidden="true">🏷️</div>
+        <div><h4>Real discounts</h4><p>Regular deals on cases, chargers and audio.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PRODUCTS ================= -->
+  <section class="sec" id="products">
+    <div class="wrap">
+      <div class="sec__head reveal">
+        <span class="eyebrow">What we stock</span>
+        <h2>Everything for your phone, under one roof.</h2>
+        <p>Walk in for a new handset or just a cable — you'll find it here, and you'll get a straight answer about what you actually need.</p>
       </div>
 
-      <div class="rev-list">
-        <article class="rev reveal">
-          <div class="rev__head">
-            <div class="avatar" aria-hidden="true">R</div>
-            <div>
-              <h4>Reshab Tamang</h4>
-              <span>1 review · 3 weeks ago</span>
-            </div>
-          </div>
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <p>“I recently purchased a phone from Pranish Store, and I must say that my overall experience was absolutely excellent. From the moment I entered the store, I felt welcomed and comfortable. The entire team was very friendly, respectful and genuinely helpful.”</p>
+      <div class="grid-products">
+        <article class="prod reveal">
+          <div class="prod__ico" aria-hidden="true">📱</div>
+          <h3>Smartphones &amp; iPhones</h3>
+          <p>Latest and value models, sealed with warranty — the most-talked-about part of our shop.</p>
+          <ul>
+            <li>iPhone range &amp; accessories</li>
+            <li>Android phones across budgets</li>
+            <li>Setup &amp; data transfer help</li>
+          </ul>
         </article>
 
-        <article class="rev reveal">
-          <div class="rev__head">
-            <div class="avatar avatar--2" aria-hidden="true">S</div>
-            <div>
-              <h4>Sujit Mahato</h4>
-              <span>1 review · 3 months ago</span>
-            </div>
-          </div>
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <p>“I've shopped at Pranish Store many times, and every visit has been a great experience. This time, I purchased a Promate Watch, and I'm truly impressed with its design, build quality, features and overall performance.”</p>
+        <article class="prod reveal">
+          <div class="prod__ico" aria-hidden="true">🧩</div>
+          <h3>Cases &amp; Protection</h3>
+          <p>Snap-on covers, silicone cases, tempered glass and camera protectors fitted in-store.</p>
+          <ul>
+            <li>Model-specific fitting</li>
+            <li>Tempered glass installation</li>
+            <li>Free accessories with select phones</li>
+          </ul>
+        </article>
+
+        <article class="prod reveal">
+          <div class="prod__ico" aria-hidden="true">🔌</div>
+          <h3>Chargers &amp; Cables</h3>
+          <p>Fast chargers, power banks and braided cables from brands you can trust.</p>
+          <ul>
+            <li>USB-C, Lightning, micro-USB</li>
+            <li>Power banks &amp; adapters</li>
+            <li>Car chargers</li>
+          </ul>
+        </article>
+
+        <article class="prod reveal">
+          <div class="prod__ico" aria-hidden="true">⌚</div>
+          <h3>Smartwatches</h3>
+          <p>Including Promate watches — praised by our customers for design and build quality.</p>
+          <ul>
+            <li>Fitness &amp; calling watches</li>
+            <li>Straps and screen guards</li>
+            <li>Pairing assistance in store</li>
+          </ul>
+        </article>
+
+        <article class="prod reveal">
+          <div class="prod__ico" aria-hidden="true">🎧</div>
+          <h3>Audio &amp; Earbuds</h3>
+          <p>Wireless earbuds, neckbands and speakers for daily commutes and workouts.</p>
+          <ul>
+            <li>TWS earbuds</li>
+            <li>Bluetooth speakers</li>
+            <li>Wired earphones</li>
+          </ul>
+        </article>
+
+        <article class="prod reveal">
+          <div class="prod__ico" aria-hidden="true">✨</div>
+          <h3>Gadgets &amp; Extras</h3>
+          <p>Small things that make a difference — cables, mounts, memory cards, selfie sticks.</p>
+          <ul>
+            <li>Memory cards &amp; OTG</li>
+            <li>Phone holders &amp; tripods</li>
+            <li>Cleaning kits &amp; accessories</li>
+          </ul>
         </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= POPULAR TIMES ================= -->
-<section class="sec" id="hours" style="padding-top:0">
-  <div class="wrap">
-    <div class="times reveal">
-      <div class="times__head">
-        <h3>Popular times · Wednesdays</h3>
-        <span>Plan your visit for a quieter counter</span>
+  <!-- ================= REVIEWS ================= -->
+  <section class="sec sec--alt" id="reviews">
+    <div class="wrap">
+      <div class="sec__head reveal">
+        <span class="eyebrow">Customer reviews</span>
+        <h2>367 people have rated us on Google.</h2>
+        <p>Here's what a few of them said after visiting the store.</p>
       </div>
 
-      <div class="chart" id="chart" role="img" aria-label="Indicative footfall chart for a typical Wednesday, busiest in the late afternoon and evening">
-        <div class="col"><div class="b" data-h="22"></div><small>6a</small></div>
-        <div class="col"><div class="b" data-h="38"></div><small>7a</small></div>
-        <div class="col"><div class="b" data-h="55"></div><small>8a</small></div>
-        <div class="col"><div class="b" data-h="70"></div><small>9a</small></div>
-        <div class="col"><div class="b" data-h="78"></div><small>10a</small></div>
-        <div class="col"><div class="b" data-h="72"></div><small>11a</small></div>
-        <div class="col"><div class="b" data-h="66"></div><small>12p</small></div>
-        <div class="col"><div class="b" data-h="74"></div><small>1p</small></div>
-        <div class="col"><div class="b" data-h="70"></div><small>2p</small></div>
-        <div class="col"><div class="b" data-h="76"></div><small>3p</small></div>
-        <div class="col peak"><div class="b" data-h="92"></div><small>4p</small></div>
-        <div class="col peak"><div class="b" data-h="100"></div><small>5p</small></div>
-        <div class="col peak"><div class="b" data-h="88"></div><small>6p</small></div>
-        <div class="col"><div class="b" data-h="64"></div><small>7p</small></div>
-        <div class="col"><div class="b" data-h="40"></div><small>8p</small></div>
-        <div class="col"><div class="b" data-h="22"></div><small>9p</small></div>
+      <div class="reviews__top">
+        <div class="score-card reveal">
+          <h3 style="font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#9CAC8A;font-weight:700">Overall rating</h3>
+          <div class="rating-big">
+            <strong>4.0</strong>
+            <div>
+              <span class="stars" aria-hidden="true">★★★★☆</span>
+              out of 5
+            </div>
+          </div>
+          <p>Based on 367 Google reviews for Pranish Store, Lalitpur.</p>
+          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+Lalitpur" target="_blank" rel="noopener">Read all reviews ↗</a>
+        </div>
+
+        <div class="rev-list">
+          <article class="rev reveal">
+            <div class="rev__head">
+              <div class="avatar" aria-hidden="true">R</div>
+              <div>
+                <h4>Reshab Tamang</h4>
+                <span>1 review · 3 weeks ago</span>
+              </div>
+            </div>
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“I recently purchased a phone from Pranish Store, and I must say that my overall experience was absolutely excellent. From the moment I entered the store, I felt welcomed and comfortable. The entire team was very friendly, respectful and genuinely helpful.”</p>
+          </article>
+
+          <article class="rev reveal">
+            <div class="rev__head">
+              <div class="avatar avatar--2" aria-hidden="true">S</div>
+              <div>
+                <h4>Sujit Mahato</h4>
+                <span>1 review · 3 months ago</span>
+              </div>
+            </div>
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“I've shopped at Pranish Store many times, and every visit has been a great experience. This time, I purchased a Promate Watch, and I'm truly impressed with its design, build quality, features and overall performance.”</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POPULAR TIMES ================= -->
+  <section class="sec" id="hours" style="padding-top:0">
+    <div class="wrap">
+      <div class="times reveal">
+        <div class="times__head">
+          <h3>Popular times · Wednesdays</h3>
+          <span>Plan your visit for a quieter counter</span>
+        </div>
+
+        <div class="chart" id="chart" role="img" aria-label="Indicative footfall chart for a typical Wednesday, busiest in the late afternoon and evening">
+          <div class="col"><div class="b" data-h="22"></div><small>6a</small></div>
+          <div class="col"><div class="b" data-h="38"></div><small>7a</small></div>
+          <div class="col"><div class="b" data-h="55"></div><small>8a</small></div>
+          <div class="col"><div class="b" data-h="70"></div><small>9a</small></div>
+          <div class="col"><div class="b" data-h="78"></div><small>10a</small></div>
+          <div class="col"><div class="b" data-h="72"></div><small>11a</small></div>
+          <div class="col"><div class="b" data-h="66"></div><small>12p</small></div>
+          <div class="col"><div class="b" data-h="74"></div><small>1p</small></div>
+          <div class="col"><div class="b" data-h="70"></div><small>2p</small></div>
+          <div class="col"><div class="b" data-h="76"></div><small>3p</small></div>
+          <div class="col peak"><div class="b" data-h="92"></div><small>4p</small></div>
+          <div class="col peak"><div class="b" data-h="100"></div><small>5p</small></div>
+          <div class="col peak"><div class="b" data-h="88"></div><small>6p</small></div>
+          <div class="col"><div class="b" data-h="64"></div><small>7p</small></div>
+          <div class="col"><div class="b" data-h="40"></div><small>8p</small></div>
+          <div class="col"><div class="b" data-h="22"></div><small>9p</small></div>
+        </div>
+
+        <p class="times__foot">
+          Store opens at <strong>10 AM</strong>. Footfall shown here is indicative — check Google Maps for live popular times before you head over.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VISIT ================= -->
+  <section class="sec sec--alt" id="visit">
+    <div class="wrap">
+      <div class="sec__head reveal">
+        <span class="eyebrow">Find us</span>
+        <h2>Come by the store in Lalitpur.</h2>
+        <p>Walk-ins welcome. Call ahead if you're looking for a specific model and we'll check stock for you.</p>
       </div>
 
-      <p class="times__foot">
-        Store opens at <strong>10 AM</strong>. Footfall shown here is indicative — check Google Maps for live popular times before you head over.
-      </p>
-    </div>
-  </div>
-</section>
+      <div class="visit">
+        <div class="info-card reveal">
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-item__ico" aria-hidden="true">📍</div>
+              <div>
+                <h4>Address</h4>
+                <p>Lalitpur, Bagmati Province 44600, Nepal</p>
+                <small>Plus code: M8C7+XM Lalitpur</small>
+              </div>
+            </div>
 
-<!-- ================= VISIT ================= -->
-<section class="sec sec--alt" id="visit">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <span class="eyebrow">Find us</span>
-      <h2>Come by the store in Lalitpur.</h2>
-      <p>Walk-ins welcome. Call ahead if you're looking for a specific model and we'll check stock for you.</p>
-    </div>
+            <div class="info-item">
+              <div class="info-item__ico" aria-hidden="true">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+9779708080830">970-8080830</a>
+                <small>Tap to call from your phone</small>
+              </div>
+            </div>
 
-    <div class="visit">
-      <div class="info-card reveal">
-        <div class="info-list">
-          <div class="info-item">
-            <div class="info-item__ico" aria-hidden="true">📍</div>
-            <div>
-              <h4>Address</h4>
-              <p>Lalitpur, Bagmati Province 44600, Nepal</p>
-              <small>Plus code: M8C7+XM Lalitpur</small>
+            <div class="info-item">
+              <div class="info-item__ico" aria-hidden="true">🌐</div>
+              <div>
+                <h4>Website</h4>
+                <a href="https://pranishstore.com" target="_blank" rel="noopener">pranishstore.com</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__ico" aria-hidden="true">🕙</div>
+              <div>
+                <h4>Opening hours</h4>
+                <p>Opens 10:00 AM</p>
+                <small>Currently listed as closed outside opening hours</small>
+              </div>
             </div>
           </div>
 
-          <div class="info-item">
-            <div class="info-item__ico" aria-hidden="true">📞</div>
-            <div>
-              <h4>Phone</h4>
-              <a href="tel:+9779708080830">970-8080830</a>
-              <small>Tap to call from your phone</small>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-item__ico" aria-hidden="true">🌐</div>
-            <div>
-              <h4>Website</h4>
-              <a href="https://pranishstore.com" target="_blank" rel="noopener">pranishstore.com</a>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-item__ico" aria-hidden="true">🕙</div>
-            <div>
-              <h4>Opening hours</h4>
-              <p>Opens 10:00 AM</p>
-              <small>Currently listed as closed outside opening hours</small>
-            </div>
+          <div class="hours-note">
+            ⏰ Hours can change on public holidays and festival days — a quick call to
+            <a href="tel:+9779708080830" style="font-weight:700;text-decoration:underline">970-8080830</a>
+            will save you a trip.
           </div>
         </div>
 
-        <div class="hours-note">
-          ⏰ Hours can change on public holidays and festival days — a quick call to
-          <a href="tel:+9779708080830" style="font-weight:700;text-decoration:underline">970-8080830</a>
-          will save you a trip.
+        <div class="map-card reveal">
+          <iframe
+            title="Map showing Pranish Store in Lalitpur"
+            src="https://www.google.com/maps?q=M8C7%2BXM+Lalitpur,+Bagmati+Province&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="map-card reveal">
-        <iframe
-          title="Map showing Pranish Store in Lalitpur"
-          src="https://www.google.com/maps?q=M8C7%2BXM+Lalitpur,+Bagmati+Province&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen></iframe>
+  <!-- ================= CTA ================= -->
+  <section class="sec" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div>
+          <h2>Looking for a specific phone or accessory?</h2>
+          <p>Give us a ring and we'll tell you what's in stock, what it costs, and whether it's worth the upgrade.</p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="tel:+9779708080830">📞 Call the store</a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+M8C7%2BXM+Lalitpur" target="_blank" rel="noopener">Directions ↗</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="sec" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="cta reveal">
-      <div>
-        <h2>Looking for a specific phone or accessory?</h2>
-        <p>Give us a ring and we'll tell you what's in stock, what it costs, and whether it's worth the upgrade.</p>
-      </div>
-      <div class="cta__actions">
-        <a class="btn btn--primary" href="tel:+9779708080830">📞 Call the store</a>
-        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Pranish+Store+M8C7%2BXM+Lalitpur" target="_blank" rel="noopener">Directions ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
@@ -775,7 +784,6 @@
     <div class="footer__grid">
       <div>
         <div class="brand">
-           <!-- Image path updated to match your file name -->
           <img src="pranish-store-city-centre.png" alt="Pranish Store Logo" onerror="this.style.display='none'">
         </div>
         <p>Mobile phones, accessories and gadgets in Lalitpur, Bagmati Province. Rated 4.0 by 367 customers on Google.</p>
@@ -829,13 +837,33 @@
     }
   });
 
-  /* ---------- Header shadow on scroll ---------- */
+  /* ---------- Auto-Hide Header on Scroll ---------- */
   var header = document.getElementById("header");
-  var onScroll = function () {
-    header.classList.toggle("is-stuck", window.scrollY > 8);
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  var lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", function () {
+    var currentScrollY = window.scrollY;
+    
+    // Add shadow when scrolled down
+    header.classList.toggle("is-stuck", currentScrollY > 8);
+
+    // Hide/Show header logic
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Scrolling down & past top -> hide header
+      header.classList.add("header--hidden");
+      
+      // Also close mobile menu if open
+      if (nav.classList.contains("open")) {
+        nav.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      }
+    } else {
+      // Scrolling up -> show header
+      header.classList.remove("header--hidden");
+    }
+    
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 
   /* ---------- Reveal on scroll ---------- */
   var revealEls = document.querySelectorAll(".reveal");
